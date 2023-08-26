@@ -1,0 +1,59 @@
+<html style="background-color: #212529;">
+
+<link rel="stylesheet" href="./CSS/Main.css">
+<link rel="stylesheet" href="./CSS/Choices.css">
+<link rel="stylesheet" href="./CSS/Cumulative.css">
+<link rel="stylesheet" href="./CSS/Selections.css">
+<link rel="stylesheet" href="./CSS/Effects.css">
+
+<body>
+    <div class="mainDiv">
+        <section class="selections">
+            <button class="selections_tile">Personal</button>
+            <div class="selections_sub">
+                <button class="selections_tile">Training</button>
+                <button class="selections_tile">Specialization</button>
+                <button class="selections_tile">Shopping</button>
+            </div>
+            <button class="selections_tile">Fort Ganon</button>
+            <div class="selections_sub">
+                <button class="selections_tile">Research</button>
+                <button class="selections_tile">Insurance</button>
+                <button class="selections_tile">Level 1</button>
+                <button class="selections_tile">Level 2</button>
+                <button class="selections_tile">Level 3</button>
+                <button class="selections_tile">Level 4</button>
+            </div>
+        </section>
+        <!-- 18 columns, 8 rows -->
+        <section class="choices">
+            <div id="choicesGrid" class="choicesGrid"></div>
+        </section>
+        <section class="cumulative_main">
+            <div class="cumulative_GoldSP">
+                <p id="cumulative_Gold" style="grid-column:1;">Gold: 0</p>
+                <p id="cumulative_Sp" style="grid-column:2;">Edict Points: 0</p>
+            </div>
+            <section id="cumulatives">
+
+            </section>
+        </section>
+        <section id="effects" class="effects">
+        </section>
+    </div>
+    <button onclick="Reset()" class="resetButton">
+        Reset
+    </button>
+</body>
+
+<script src="./JS/FusterCluck.js"></script>
+<script src="./JS/Main.js"></script>
+
+<script src="./JS/Selections.js"></script>
+<script src="./JS/Choices.js"></script>
+<script src="./JS/Cumulative.js"></script>
+<script src="./JS/Effects.js"></script>
+
+
+
+</html>
