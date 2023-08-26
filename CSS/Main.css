@@ -1,0 +1,40 @@
+.mainDiv {
+    display: grid;
+    grid-template-columns: 1fr 7fr 2fr;
+    grid-template-rows: 1fr 280px;
+    grid-template-areas: "selections choices cumulative" "effects effects effects";
+    height: 95%;
+    width: 99%;
+    border: 1px double #525142;
+    padding: 5px;
+}
+
+.choices,
+.cumulative,
+.selections {
+    float: left;
+    border: 1px solid lavenderblush;
+    padding: 5px;
+}
+
+.image_icon {
+    width: 95%;
+    height: 95%;
+}
+
+.resetButton {
+    width: 75px;
+    height: 30px;
+    border: 3px solid gray;
+    border-radius: 0px;
+    margin: 5px 0px;
+    background-color: rgba(0, 0, 0, 0);
+    color: lavenderblush;
+    transition: color 250ms, background-color 250ms, border-radius 250ms;
+}
+
+.resetButton:hover {
+    color: lightgray;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+}
