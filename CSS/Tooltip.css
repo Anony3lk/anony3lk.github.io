@@ -1,0 +1,11 @@
+#tooltip{
+    position: relative;
+    display: inline-block;
+    border: 2px solid yellow;
+    border-radius: 10px;
+    visibility: collapse;
+}
+#tooltip_text{
+    color: lavender;
+    visibility: collapse;
+}

@@ -1,0 +1,33 @@
+.effects {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-areas: "title title title title" "effects effects effects effects" "effects effects effects effects";
+    border: 1px solid lavenderblush;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    color: gold;
+    grid-area: effects;
+}
+
+.effects p {
+    font-size: 20px;
+    font-family: Verdana;
+}
+
+.effects_effect {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-template-rows: 1fr;
+    grid-area: effects;
+    align-items: center;
+    justify-items: start;
+}
+
+.effects_effect_icon {
+    place-self: center;
+    border-radius: 5px;
+    min-height: 32px;
+    min-width: 32px;
+}

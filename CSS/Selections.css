@@ -1,0 +1,33 @@
+.selections {
+    margin: 3px 6px 3px 0px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    grid-area: selections;
+}
+
+
+.selections_tile {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 10px;
+    color: lavender;
+    border: none;
+    font-size: 16px;
+    padding: 6px 14px;
+    margin: 8px 5px;
+    cursor: pointer;
+    transition: color 250ms, background-color 250ms, border 250ms, margin 250ms, padding 250ms;
+    word-wrap: break-word;
+    font-family: fantasy;
+}
+
+.selections_tile:hover,
+.selections_selected {
+    color: rgb(216, 162, 241);
+    background-color: rgba(255, 240, 245, 0.15);
+    border: 1px solid white;
+}
+
+.selections_sub {
+    margin-left: 30px;
+}

@@ -1,0 +1,85 @@
+.choices {
+    min-width: 600px;
+    min-height: 300px;
+    margin: 3px 6px;
+    overflow: hidden;
+    grid-area: choices;
+}
+
+.choicesGrid {
+    display: grid;
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    place-items: center;
+    margin: 15px;
+    padding: 10px;
+    height: 95%;
+}
+
+
+.choices_tile,
+.choices_tile_hidden {
+    min-width: 40;
+    min-height: 40;
+    background-repeat: no-repeat;
+    background-size: 640px 1800px;
+    border: 2px solid black;
+    border-radius: 5px;
+    outline-width: 4px;
+    outline-style: solid;
+    outline-color: transparent;
+    margin: 6px;
+    transition:
+        min-height 250ms,
+        min-width 250ms,
+        margin 250ms,
+        outline-width 150ms,
+        box-shadow 200ms,
+        background-size 250ms,
+        background-position 250ms,
+        box-shadow 150ms;
+}
+
+.choices_tile:hover {
+    min-width: 48;
+    min-height: 48;
+    background-size: 768px 2160px;
+    outline-width: 6px;
+    cursor: pointer;
+}
+
+
+.choices_tile_active,
+.choices_tile_AActive {
+    opacity: 1;
+    border-width: 3px;
+    border-color: white;
+}
+
+.choices_tile_AActive {
+    cursor: default;
+}
+.choices_tile_AActive:hover{
+    min-width: 40;
+    min-height: 40;
+    background-size: 640px 1800px;
+    outline-width: 4px;
+    cursor: default;
+}
+
+.choices_tile_hidden {
+    border: none;
+    outline: 0px solid black;
+}
+
+.choices_tile_inactive {
+    opacity: .25;
+}
+
+.choices_tile_currentEffect_Positive {
+    outline-color: green;
+}
+
+.choices_tile_currentEffect_Negative {
+    outline-color: red;
+}
