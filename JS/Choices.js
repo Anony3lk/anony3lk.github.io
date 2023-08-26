@@ -45,7 +45,7 @@ function ChoicesTileUpdate(selectionEdictData) {
         return;
     }
     let thisTile = ChoicesTileFind(selectionEdictData)
-    thisTile.edictProperties = selectionEdictData;
+    thisTile[`edictProperties`] = selectionEdictData;
 
     ChoicesTileIconUpdate(thisTile);
 
