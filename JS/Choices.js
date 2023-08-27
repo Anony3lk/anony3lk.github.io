@@ -102,7 +102,7 @@ function ChoicesHideAll() {
 function ChoicesTileFind(sObjData) {
     let returnee = undefined;
     [...choicesGrid.children].forEach(tile => {
-        if ((tile.style[`grid-row`] == sObjData.row) && (tile.style[`grid-column`] == sObjData.col)) {
+        if ((tile.style[`gridRowStart`] == sObjData.row) && (tile.style[`gridColumnStart`] == sObjData.col)) {
             returnee = tile;
         };
     });
