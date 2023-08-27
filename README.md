@@ -1,7 +1,6 @@
 # anony3lk.github.io
-!Erm
-* I don't know why, but this only works in Firefox (I hope it does at least). If anyone knows why, post an issue to explain it please. If I'm able to, I'll enact changes to make the code work in the other 2 major browsers (Chrome and Edge).
-  
+Shoutouts to Laiite for fixing this to work on Chrome
+
 Info:
 - Reset button loacted at bottom left
 - Skills show up in Cumulative, so I would recommend avoiding those edicts until the end to avoid cluttering, if you want to add the cost of those edicts to the totals
