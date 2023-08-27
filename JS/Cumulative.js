@@ -14,7 +14,7 @@ function CumulativePush(tile) {
                 CumulativeEffectChange(note, false);
             }
             else {
-                if (note.color != `C[0]`){
+                if (note.color != `C[0]`) {
                     CumulativeEffectAppend(note);
                 }
             }
@@ -134,33 +134,23 @@ function CumulativeEffectChange(note, boolMinus) {
 
     let noteValue = CumulativeArrowTranslator(note.value);
 
-    if (typeof noteValue == `number`) {
+    /* if (typeof noteValue == `number`) {
         if (boolMinus) {
             changeEffect.value = `${parseInt(changeEffect.value) - parseInt(noteValue)}`;
         }
         else {
             changeEffect.value = `${parseInt(changeEffect.value) + parseInt(noteValue)}`;
         }
+    } */
+    if (noteValue.includes(`%`)) {
+        changeEffect.pValue = boolMinus ? parseInt(changeEffect.pValue) - parseInt(noteValue) : parseInt(changeEffect.pValue) + parseInt(noteValue);
     }
-    if (typeof noteValue == `string`) {
-        if (noteValue.includes(`%`)) {
-            changeEffect.pValue = boolMinus ? parseInt(changeEffect.pValue) - parseInt(noteValue) : parseInt(changeEffect.pValue) + parseInt(noteValue);
+    else if (!isNaN(parseInt(noteValue))) {
+        if (boolMinus) {
+            changeEffect.value = `${parseInt(changeEffect.value) - parseInt(noteValue)}`;
         }
-        /* else if (note.value.includes(`⬆`) || note.value.includes(`⬇`)) {
-            if (boolMinus) {
-                changeEffect.value -= note.value.includes(`⬆`) ? note.value.trim().length : -note.value.trim().length;
-            }
-            else {
-                changeEffect.value += note.value.includes(`⬆`) ? note.value.trim().length : -note.value.trim().length;
-            }
-        } */
-        else if (!isNaN(parseInt(noteValue))) {
-            if (boolMinus) {
-                changeEffect.value = `${parseInt(changeEffect.value) - parseInt(noteValue)}`;
-            }
-            else {
-                changeEffect.value = `${parseInt(changeEffect.value) + parseInt(noteValue)}`;
-            }
+        else {
+            changeEffect.value = `${parseInt(changeEffect.value) + parseInt(noteValue)}`;
         }
     }
 
@@ -307,7 +297,7 @@ function CumulativeEffectColorGetter(note, wrapValue, orgColor = `orange`) {
     if (parseInt(wrapValue) == 0) {
         return `lavenderblush`;
     }
-    if (note.effect == `Corruption`){
+    if (note.effect == `Corruption`) {
         return `blueviolet`;
     }
     let color = orgColor;
@@ -348,11 +338,11 @@ function CumulativeEffectPositiveGetter(note) {
 }
 
 function CumulativeArrowTranslator(arrowValue) {
-    if(arrowValue == undefined){
+    if (arrowValue == undefined) {
         return arrowValue;
     }
     if (arrowValue.includes(`⬆`) || arrowValue.includes(`⬇`)) {
-        return arrowValue.includes(`⬆`) ? `+${arrowValue.trim().length}` : -arrowValue.trim().length;
+        return arrowValue.includes(`⬆`) ? `+${arrowValue.trim().length}` : `-${arrowValue.trim().length}`;
     }
     else {
         return arrowValue;
@@ -410,14 +400,14 @@ function CumulativeReset() {
                 tampered.costGold = 0;
                 tampered.costSp = 0;
 
-                if (tampered.notes[0] != undefined){
+                if (tampered.notes[0] != undefined) {
                     let tamperedNotes = [];
-                    tampered.notes[0].forEach(effect=>{
-                        if (effect.value != undefined){
+                    tampered.notes[0].forEach(effect => {
+                        if (effect.value != undefined) {
                             tamperedNotes.push(effect)
                         };
                     });
-                    tampered.notes[0] = tamperedNotes;    
+                    tampered.notes[0] = tamperedNotes;
                 }
 
                 CumulativePush({ "edictProperties": tampered });
