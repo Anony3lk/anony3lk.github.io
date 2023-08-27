@@ -10,7 +10,7 @@ function ChoicesUpdate(selectionName) {
         return;
     };
 
-    selection.forEach(sObj => ChoicesTileUpdate(sObj));
+    selection.forEach(sEdict => ChoicesTileUpdate(sEdict));
 };
 
 
@@ -19,42 +19,45 @@ function ChoicesUpdate(selectionName) {
 function ChoicesGridPopulate() {
     for (let r = 1; r < 9; r++) {
         for (let c = 1; c < 19; c++) {
-            let appendee = document.createElement(`div`);
+            let newTileDiv = document.createElement(`div`);
 
-            appendee.className = `choices_tile`;
-            appendee.style[`grid-column`] = `${c}`;
-            appendee.style[`grid-row`] = `${r}`;
+            newTileDiv.className = `choices_tile`;
+            newTileDiv.style[`grid-column`] = `${c}`;
+            newTileDiv.style[`grid-row`] = `${r}`;
 
-            appendee.addEventListener(`mouseenter`, ChoicesTileMouseEnter);
-            appendee.addEventListener(`mouseleave`, ChoicesTileMouseLeave);
-            appendee.addEventListener(`click`, ChoicesTileClick)
+            newTileDiv.addEventListener(`mouseenter`, ChoicesTileMouseEnter);
+            newTileDiv.addEventListener(`mouseleave`, ChoicesTileMouseLeave);
+            newTileDiv.addEventListener(`click`, ChoicesTileClick)
 
 
-            choicesGrid.appendChild(appendee);
+            choicesGrid.appendChild(newTileDiv);
         };
     };
 }
 function ChoicesGridClear() {
     [...choicesGrid.children].forEach(choice => choice.remove());
 }
+function ChoicesHideAll() {
+    [...choicesGrid.children].forEach(choiceTile => choiceTile.className = `choices_tile_hidden`)
+}
 
 // Tiles --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function ChoicesTileUpdate(selectionEdictData) {
-    if (selectionEdictData.row == `0`){
+function ChoicesTileUpdate(selectionEdict) {
+    if (selectionEdict.row == `0`){
         return;
     }
-    let thisTile = ChoicesTileFind(selectionEdictData)
-    thisTile[`edictProperties`] = selectionEdictData;
+    let thisTile = ChoicesTileFind(selectionEdict)
+    thisTile[`edictProperties`] = selectionEdict;
 
     ChoicesTileIconUpdate(thisTile);
 
     thisTile.className = `choices_tile`
-    if (selectionEdictData.alwaysActive == true){
+    if (selectionEdict.alwaysActive == true){
         thisTile.className += " choices_tile_AActive";
     }
     else{
-        thisTile.className += ActiveCheck(selectionEdictData) ? ` choices_tile_active` : ``;
+        thisTile.className += ActiveCheck(selectionEdict) ? ` choices_tile_active` : ``;
     }
 };
 
@@ -74,35 +77,30 @@ function ChoicesTileMouseLeave(ev) {
 }
 function ChoicesTileClick(ev) {
     let clickedTile = ev.target;
-    if (clickedTile.className.includes(`choices_tile_hidden`)) {
+    if (clickedTile.className.includes(`choices_tile_hidden`) || clickedTile.className.includes(`choices_tile_AActive`)) {
         return;
     }
-    if(clickedTile.className.includes(`choices_tile_AActive`)){
-        return;
-    }
+
     if (clickedTile.className.includes(`choices_tile_active`)) {
         clickedTile.className = `choices_tile`
         
-        ActiveRemove(ev.target.edictProperties);
+        ActiveRemove(clickedTile.edictProperties);
 
-        CumulativePoof(ev.target);
+        CumulativePoof(clickedTile);
     }
     else {
         clickedTile.className += ` choices_tile_active`
 
-        ActiveAdd(ev.target.edictProperties);
+        ActiveAdd(clickedTile.edictProperties);
 
-        CumulativePush(ev.target);
+        CumulativePush(clickedTile);
     }
 }
 
-function ChoicesHideAll() {
-    [...choicesGrid.children].forEach(choiceTile => choiceTile.className = `choices_tile_hidden`)
-}
-function ChoicesTileFind(sObjData) {
+function ChoicesTileFind(sEdict) {
     let returnee = undefined;
     [...choicesGrid.children].forEach(tile => {
-        if ((tile.style[`gridRowStart`] == sObjData.row) && (tile.style[`gridColumnStart`] == sObjData.col)) {
+        if ((tile.style[`gridRowStart`] == sEdict.row) && (tile.style[`gridColumnStart`] == sEdict.col)) {
             returnee = tile;
         };
     });
@@ -114,14 +112,8 @@ function ChoicesTileIconUpdate(tile) {
     let trow = Math.floor(tile.edictProperties.iconIndex / 16);
     let tcol = tile.edictProperties.iconIndex - (trow * 16);
 
-    let src = `./IconSet.png`;
-
-    let x = tw * tcol;
-    let y = th * trow;
-
-
-    tile.style.backgroundImage = "url('" + src + "')";
-    tile.style.backgroundPosition = `-${x}px -${y}px`;
+    tile.style.backgroundImage = `url("./IconSet.png")`
+    tile.style.backgroundPosition = `-${tw * tcol}px -${th * trow}px`;
 };
 function ChoicesTileIconEffect(ev, reverse) {
     let heh = ev.target.style.backgroundPosition.split(`px`)

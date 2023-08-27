@@ -46,11 +46,6 @@ function EffectsUpdate(tile) {
 
 
     let notes = tileProperties.notes[0];
-    if (tileProperties.notes.length > 1) {
-        console.log(`\n`)
-        console.log(notes)
-        console.log(`\n`)
-    }
 
     if (notes != undefined) {
         notes.forEach(edEff => {
@@ -107,12 +102,7 @@ function EffectsIconUpdate(div) {
     let ty = Math.floor(div.iconIndex / 16);
     let tx = div.iconIndex - (ty * 16);
 
-    let src = `./IconSet.png`;
 
-    let x = tw * tx;
-    let y = th * ty;
-
-
-    div.style.backgroundImage = "url('" + src + "')";
-    div.style.backgroundPosition = `-${x}px -${y}px`;
+    div.style.backgroundImage = `url("./IconSet.png")`;
+    div.style.backgroundPosition = `-${tw * tx}px -${th * ty}px`;
 }
