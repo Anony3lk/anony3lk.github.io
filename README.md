@@ -6,8 +6,8 @@ Info:
 - Reset button loacted at bottom left
 - Skills show up in Cumulative, so I would recommend avoiding those edicts until the end to avoid cluttering, if you want to add the cost of those edicts to the totals
 
-  
-Post any issues, if you like, but I can't promise that I will fix any of it. Sorry.
+
+Post any issues (hopefully none) but I can't promise that I will fix any of it. Sorry.
 
 Feel free to copy the code and modify it to your liking (Good luck if you do)
 
