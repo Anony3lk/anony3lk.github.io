@@ -352,7 +352,7 @@ function CumulativeArrowTranslator(arrowValue) {
         return arrowValue;
     }
     if (arrowValue.includes(`⬆`) || arrowValue.includes(`⬇`)) {
-        return arrowValue.includes(`⬆`) ? arrowValue.trim().length : -arrowValue.trim().length;
+        return arrowValue.includes(`⬆`) ? `+${arrowValue.trim().length}` : -arrowValue.trim().length;
     }
     else {
         return arrowValue;
